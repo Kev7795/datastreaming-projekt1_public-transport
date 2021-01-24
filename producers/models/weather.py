@@ -36,7 +36,7 @@ class Weather(Producer):
         # replicas
         #
         #
-        topic_name = f"com.udacity.weather"
+        topic_name = f"com.udacity.weather2"
         super().__init__(
             topic_name, # TODO: Come up with a better topic name
             key_schema=Weather.key_schema,
@@ -82,6 +82,7 @@ class Weather(Producer):
         # specify the Avro schemas and verify that you are using the correct Content-Type header.
         #
         #
+        
         #logger.info("weather kafka proxy integration incomplete - skipping")
         resp = requests.post(
             #

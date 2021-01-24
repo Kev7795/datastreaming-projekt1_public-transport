@@ -63,7 +63,7 @@ def run_server():
     # Build kafka consumers
     consumers = [
         KafkaConsumer(
-            "com.udacity.weather",
+            "com.udacity.weather2",
             weather_model.process_message,
             offset_earliest=True,
         ),

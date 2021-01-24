@@ -41,7 +41,8 @@ class KafkaConsumer:
                  # using only one broker
                  "bootstrap.servers": "PLAINTEXT://localhost:9092",
                  "group.id": topic_name_pattern,
-                 default.topic.config": {'auto.offset.reset': 'earliest'}
+                 "auto.offset.reset": "earliest"
+                 #"default.topic.config": {'auto.offset.reset': 'earliest'}
                 ##URLs for local Docker deployment can be found in the project README
         }
 
