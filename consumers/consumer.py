@@ -98,14 +98,25 @@ class KafkaConsumer:
         # Additionally, make sure you return 1 when a message is processed, and 0 when no message
         # is retrieved.
         #
-        try:
-            message = self.poll(1.0)
-        except SerializerError as er:
-            logger.error(f"Error while consuming data: {er.message}")
+        message = self.consumer.poll(self.consume_timeout)
+        if message is None:
             return 0
-
-            self.message_handler(message)
+        elif message.error() is not None:
+            logger.error(f"error from consumer: {message.error()}")
+            return 0
+        else:
+            logger.info(f"consumed message {message.key()}: {message.value()}")
             return 1
+
+        # old consume approach
+        #try:
+        #    message = self.poll(1.0)
+        #except SerializerError as er:
+        #    logger.error(f"Error while consuming data: {er.message}")
+        #    return 0#
+
+        #    self.message_handler(message)
+        #    return 1
 
     
 

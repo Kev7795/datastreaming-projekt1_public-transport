@@ -41,7 +41,8 @@ class Producer:
             "bootstrap.servers": "PLAINTEXT://localhost:9092",
             # using only one server because the others are not reachble
             #"bootstrap.servers": "PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9093,PLAINTEXT://localhost:9094",
-            "schema.registry.url": "http://localhost:8081"
+            "schema.registry.url": "http://localhost:8081",
+            "group.id": "transit"
             ##URLs for local Docker deployment can be found in the project README
         }
         
