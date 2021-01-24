@@ -41,7 +41,7 @@ class KafkaConsumer:
                  # using only one broker
                  "bootstrap.servers": "PLAINTEXT://localhost:9092",
                  "group.id": topic_name_pattern,
-                 "default.topic.config": {'auto.offset.reset': 'earliest'}
+                 default.topic.config": {'auto.offset.reset': 'earliest'}
                 ##URLs for local Docker deployment can be found in the project README
         }
 
@@ -72,8 +72,8 @@ class KafkaConsumer:
         # the beginning or earliest
         logger.info("on_assign is incomplete - skipping")
         for partition in partitions:
-            
-            partition.offset = OFFSET_BEGINNING
+            if self.offset_earliest is True:
+                partition.offset = OFFSET_BEGINNING
         consumer.assign(partitions)
             # TODO
 
